@@ -19,12 +19,12 @@ class CreatePostsTable extends Migration
             $table->foreignId('category_id')->constrained();
             $table->string('name', 100);
             $table->string('slug', 200)->unique();
-            $table->string('cover')->unique();
+            $table->string('cover');
             $table->longText('excerpt');
             $table->longText('text');
             $table->enum('status', ['draft', 'publish', 'private', 'archive']);
-            $table->timestamp('date_publish');
-            $table->timestamp('date_expire');
+            $table->timestamp('date_publish')->nullable();
+            $table->timestamp('date_expire')->nullable();
             $table->timestamps();
         });
     }
